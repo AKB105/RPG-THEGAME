@@ -1,6 +1,6 @@
 # RPG-THEGAME 🐉
 Your team started a game and then suddenly vanished into the dungeon!
-The code is riddled with **12 bugs**. Your quest: find and fix every one of them in order to save your team!
+The code is riddled with **6 bugs**. Your quest: find and fix every one of them in order to save your team!
 
 ## What the game is SUPPOSED to do
 
