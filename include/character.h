@@ -1,5 +1,5 @@
-#ifndef CHARACTER_H
-#define CHARACTER_H_
+#ifndef CHARACTER_H_ //Fix: CHARACTER_H_ fixed to CHARACTER_H_ so that it matches.
+#define CHARACTER_H_ 
 
 #include <string>
 
