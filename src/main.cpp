@@ -9,12 +9,18 @@
 #include "../include/character.h"
 #include "../include/monster.h"
 
-void drinkPotion(Character hero) {
+void drinkPotion(Character& hero) { //Fix: The function healed a copy of hero, 
+                                    //now, since it passes by reference, it can heal the real hero.
     if (hero.potions <= 0) {
         std::cout << hero.name << " is out of potions!\n";
         return;
     }
-    hero.hp += 10;
+    hero.hp += 10; 
+    //Fix: This should check hero.maxHp so that it doesn't heal above it.
+    if(hero.hp > hero.maxHp) {
+        hero.hp = hero.maxHp;
+    }
+
     hero.potions--;
     std::cout << std::endl << hero.name << " drinks a potion! Health increased by 10! \n";
 }
@@ -30,12 +36,13 @@ int main() {
     Character hero(heroName, 30, 7, 2);
     int wins = 0;
 
-    for (int i = 0; i <= 3; i++) {
+    for (int i = 0; i < 3; i++) { //Fix: <= to < so that it runs 3 battles
         Character monster = makeRandomMonster();
         std::cout << "\n--- Battle " << (i + 1) << ": a wild "
                   << monster.name << " appears! ---\n";
 
-        while (hero.isAlive() || monster.isAlive()) {
+        while (hero.isAlive() && monster.isAlive()) { //Fix: AND condition instead of OR, 
+                                                     //otherwise, the battle could continue even after one dies.
             std::cout << "\n";
             hero.printStatus();
             monster.printStatus();
@@ -67,6 +74,6 @@ int main() {
         }
     }
 
-    std::cout << "\n=== GAME OVER — monsters defeated: " << wins << " ===\n";
+    std::cout << "\n=== GAME OVER - monsters defeated: " << wins << " ===\n";
     return 0;
 }

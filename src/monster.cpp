@@ -9,5 +9,5 @@ Character makeRandomMonster() {
 
     int pick = rand() % 3;
 
-    return Character(names[pick], atks[pick], hps[pick], defs[pick]);
+    return Character(names[pick], hps[pick], atks[pick], defs[pick]); //Fix: atks and hps should be swapped.
 }
